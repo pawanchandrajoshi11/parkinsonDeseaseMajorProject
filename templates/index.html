@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+  <!-- Make it compatible to mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Parkinson Disease Classification</title>      <style>
+      
+         *{
+            color:Violet;
+            text-align:center;
+            font-family:cursive;
+         }
+         
+         body {
+         background-image: url('https://cdn-prod.medicalnewstoday.com/content/images/articles/323/323409/tremor-with-parkinson-s.jpg');
+            background-size: cover;
+              height:750px;
+               }
+         input[type=submit] {
+                            background-color: black;
+                            color: Violet;
+                            font-size:15px;
+                             }
+                             p{
+                             font-size:30px;
+                             }
+         .center {
+		display: flex;
+  		justify-content: right;
+      margin-right: 250px;
+  		align-items: center;
+ 		height: 400px;
+ 
+		}
+	h1{
+		font-size:70px;
+		}
+	input[type=date] {
+                            background-color: black;
+                            color: Violet;
+	      }
+	      select{
+		      background-color:Violetblack;
+	      }
+	option{
+		background-color:black;
+		}
+      </style>
+</head>
+
+<body>
+ <div class="login">
+	<h1 style="color:White;">Parkinson Disease Classification</h1>
+
+     <!-- Action is where the data is sent. In our case, predict page.
+     If action is omitted, it assumed to be the current page -->
+    <form action="{{ url_for('predict')}}"method="post">
+
+		<select id="gender" name="gender" required>
+            <option value="" disabled selected>Gender(Male/Female)</option>
+            <option value="1">Male</option>
+            <option value="0">Female</option>
+          </select> 
+
+		  <input type="text" name="PPE" placeholder="PPE" required="required" />
+		  <input type="text" name="DFA" placeholder="DFA" required="required" />
+		  <input type="text" name="RPDE" placeholder="RPDE" required="required" />
+		  <input type="text" name="numPulses" placeholder="numPulses" required="required" />
+		  <input type="text" name="numPeriodsPulses" placeholder="numPeriodsPulses" required="required" />
+		  <input type="text" name="meanPeriodPulses" placeholder="meanPeriodPulses" required="required" />
+		  <input type="text" name="stdDevPeriodPulses" placeholder="stdDevPeriodPulses" required="required" />
+		  <input type="text" name="locPctJitter" placeholder="locPctJitter" required="required" />
+		  <input type="text" name="locAbsJitter" placeholder="locAbsJitter" required="required" />
+		  <input type="text" name="rapJitter" placeholder="rapJitter" required="required" />
+  
+		  <input type="text" name="ppq5Jitter" placeholder="ppq5Jitter" required="required" />
+		  <input type="text" name="ddpJitter" placeholder="ddpJitter" required="required" />
+		  <input type="text" name="minIntensity" placeholder="minIntensity" required="required" />
+		  <input type="text" name="maxIntensity" placeholder="maxIntensity" required="required" />
+		  <input type="text" name="meanAutoCorrHarmonicity" placeholder="meanAutoCorrHarmonicity" required="required" />
+		  <input type="text" name="meanNoiseToHarmHarmonicity" placeholder="meanNoiseToHarmHarmonicity" required="required" />
+
+      <p><button type="submit" class="btn btn-primary btn-block btn-large" color='black'>Predict Disease</button></p>
+    </form>
+
+   <h2 style="color:Black;justify-content: center;">
+   {{ prediction_text }} </h2>
+
+
+    
+ </div>
+
+
+</body>
+</html>
+
